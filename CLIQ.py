@@ -58,4 +58,3 @@ def generate_command(user_query: str = Query(..., description="Query describing 
 
 
 
-# thetone Tony's github
