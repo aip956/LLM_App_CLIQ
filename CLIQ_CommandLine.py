@@ -98,3 +98,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# Add response to parser to see if valid
+# Be able to add question as CLI argument
