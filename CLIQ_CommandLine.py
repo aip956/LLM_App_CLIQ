@@ -80,11 +80,17 @@ def main():
         print("No suitable command suggestions found.")
         return
 
-    # Step 4: Display options to the user
+    # Step 4: Validate commands and display options to the user
     print("\nCommand suggestions:")
+    validate_commands = []
     for index, cmd in enumerate(commands, start=1):
+        validate_commands.append(cmd)
         print(f"{index}) {cmd['description']}")
         print(f"☞ {cmd['command']}")
+
+    if not validate_commands:
+        print("No valid command suggestions found.")
+        return
 
     # Step 5: Ask the user to select a command
     while True:
