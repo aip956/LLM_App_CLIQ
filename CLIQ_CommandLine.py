@@ -1,5 +1,7 @@
 import subprocess
 import json
+import argparse
+import shutil
 
 # Constants
 MODEL = "llama3.2"
@@ -53,25 +55,38 @@ def generate_command_suggestions(user_query):
         print(f"Error: {str(e)}")
         return []
 
+#Filter out commands that are not valid system commands
+def validate_command(command):
+    # Split the command to check the base command (e.g. "ls", "find")
+    base_command = command.split()[0]
+    return shutil.which(base_command) is not None
+
 # Main function to run the interactive command prompt
 def main():
-    # Step 1: Get user input
-    user_query = input("Describe what you want to do: ")
+    # Step 1: Parse the command line arguments
+    parser = argparse.ArgumentParser(description="Generate command suggestions for a user query.")
+    parser.add_argument("user_query", nargs='?', default=None, help="Query describing what you want to do on the command line")
+    args = parser.parse_args()
 
-    # Step 2: Get command suggestions from the LLM
+    # Step 2: If no command line arg, prompt the user for input
+    user_query = args.user_query
+    if user_query is None:
+        user_query = input("Describe what you want to do: ")
+
+    # Step 3: Get command suggestions from the LLM
     commands = generate_command_suggestions(user_query)
 
     if not commands:
         print("No suitable command suggestions found.")
         return
 
-    # Step 3: Display options to the user
+    # Step 4: Display options to the user
     print("\nCommand suggestions:")
     for index, cmd in enumerate(commands, start=1):
         print(f"{index}) {cmd['description']}")
         print(f"☞ {cmd['command']}")
 
-    # Step 4: Ask the user to select a command
+    # Step 5: Ask the user to select a command
     while True:
         try:
             choice = int(input("\nPlease select a command number to execute (or press 0 to cancel): "))
@@ -86,7 +101,7 @@ def main():
         except ValueError:
             print("Invalid input. Please enter a number.")
 
-    # Step 5: Execute the selected command
+    # Step 6: Execute the selected command
     print(f"\nRunning: {selected_command}")
     exec_response = subprocess.run(selected_command, shell=True, capture_output=True, text=True)
 
