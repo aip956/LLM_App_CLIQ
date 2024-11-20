@@ -10,18 +10,22 @@ from openai import OpenAI
 # Constants
 MODEL = "llama3.2"
 OLLAMA_CMD = f"/usr/local/bin/ollama run {MODEL}"
-OLLAMA_PROMPT = """
+llm_prompt = """
 Given a user query describing an action they want to perform
 on the command line, generate up to three possible commands in
 JSON format. Each command should be appropriate, non-destructive,
 and safe to execute on a typical Unix-like system. If the query
 is nonsensical or potentially dangerous, respond with an empty
 JSON list. For each command, provide a brief description of what
-it does. Return the commands in this format:
-{ "commands": [ {"command": "example_command", "description": "Description of the command."} ] }
+it does. Return the commands in this exact format:
+{
+  "commands": [
+    {"command": "example_command", "description": "Description of the command."}
+  ]
+}
 You are the backend for this program. You receive the query and 
-return only the JSON. You only speak JSON. Please take an extra moment
-to think and review your suggestions to ensure they are correct.
+return only the JSON. You only speak JSON, with no extra text.
+Please take an extra moment to think and review your suggestions to ensure they are correct.
 """
 
 # Load environment variables
@@ -41,7 +45,7 @@ def generate_command_suggestions(user_query, use_remote=False):
             messages=[
                 {
                     "role": "system",
-                    "content": "You are a helpful assistant.",
+                    "content": llm_prompt,
                 },
                 {
                     "role": "user",
@@ -56,7 +60,7 @@ def generate_command_suggestions(user_query, use_remote=False):
         response_text = response.choices[0].message.content
     else:
         # Prepare the prompt for Ollama
-        full_prompt = f"{OLLAMA_PROMPT}\nQuery: '{user_query}'"
+        full_prompt = f"{llm_prompt}\nQuery: '{user_query}'"
         try:
             # Execute Ollama command
             response = subprocess.run(
@@ -80,7 +84,6 @@ def generate_command_suggestions(user_query, use_remote=False):
         return commands_data.get("commands", [])
     except json.JSONDecodeError:
         print("Error: Unable to decode the JSON response.")
-        print(response_text)
         return []
 
 def validate_command(command):
@@ -108,7 +111,6 @@ def main():
         return
 
     # Step 4: Validate commands and display options to the user
-    print("\nCommand suggestions:")
     validate_commands = []
     for index, cmd in enumerate(commands, start=1):
         validate_commands.append(cmd)
