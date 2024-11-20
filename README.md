@@ -6,9 +6,12 @@
 `source .venv/bin/activate`
 
 # Install pip packages from requirements.txt
-`pip install`
+`pip install -r requirements.txt`
 
 # Run program
-# -r: remote (optional)
-# query: your question (optional)
-`python cliq.py [-r] [query]`
+-r: remote (optional)
+query: your question (optional)
+```
+python cliq.py [-r] [query]
+```
+
