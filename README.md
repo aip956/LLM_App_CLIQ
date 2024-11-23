@@ -67,6 +67,8 @@ The application can be run in two modes: **local** or **remote**.
 
 - This will use the locally installed model (Ollama 3.2).</br>
      `python3 CLIQ_CommandLine.py "list the files in the directory"`
+    ![Run locally with request in command line](./ScreenCaps/Run_Locally.png)
+</br>
 
 2. Remote Mode (using OpenAI GPT-4.0):</br>
     `python3 CLIQ_CommandLine.py -r "list the files in the directory"`
@@ -79,9 +81,12 @@ The application can be run in two modes: **local** or **remote**.
 
     `python3 CLIQ_CommandLine.py`
 
+
 - You will then be prompted to enter your query interactively:
 
-    `Describe what you want to do:`
+    `Describe what you want to do:`</br></br>
+        ![Run locally and be prompted](./ScreenCaps/Run_Local_No_Request.png)
+</br>
 
 ##### Example Queries
 
@@ -146,15 +151,8 @@ query: your question (optional)
 ```
 python cliq.py [-r] [query]
 ```
-###### Run locally with request in command line
-`python3 CLIQ_CommandLine.py "list the files in the directory"`
 
-![Run locally with request in command line](./ScreenCaps/Run_Locally.png)
-</br>
 
-###### Run and be prompted for request
-![Run locally and be prompted](./ScreenCaps/Run_Local_No_Request.png)
-</br>
 
 ## Run with request in Command Line
 ### Remote LLM
