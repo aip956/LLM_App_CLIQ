@@ -31,9 +31,10 @@ python cliq.py [-r] [query]
 
 ### Local LLM
 #### Run with request in command line
+##### (Do not use '-r)
 ![Run locally with request in command line](./ScreenCaps/Run_Locally.png)
 </br>
 
 ### Run and be prompted for request
-![Run locally with request in command line](./ScreenCaps/Run_Locally.png)
+![Run locally with request in command line](./ScreenCaps/Run_Local_No_Request.png)
 </br>
