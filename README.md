@@ -37,18 +37,16 @@ This app supports two modes of usage:
     `git clone <repo_url>` </br>
     `cd <repo_name>`
 
-
 2. Create and Activate a Virtual Environment
-- Create a virtual environment named `venv`:
-    `python -m venv venv
+- Create a virtual environment named `venv`: <br>
+    `python -m venv venv`
 - Activate the virtual environment:
   - Linux / macOS
   - `source venv/bin/activate`
   - Windows
-  - `.\venv\Scripts\activate
+  - `.\venv\Scripts\activate`
 
-3. Install Dependencies:
-
+3. Install Dependencies: <br>
     `pip install -r requirements.txt`
 
 4. Set Up Environment Variables:
@@ -61,20 +59,19 @@ This app supports two modes of usage:
 
 ### Usage
 
-The application can be run in two modes: local or remote.
+The application can be run in two modes: **local** or **remote**.
 
 ##### Running the App
 
 1. Local Mode (using Ollama 3.2):
 
-- This will use the locally installed model (Ollama 3.2).
+- This will use the locally installed model (Ollama 3.2).</br>
      `python3 CLIQ_CommandLine.py "list the files in the directory"`
 
-2. Remote Mode (using OpenAI GPT-4.0):
-
+2. Remote Mode (using OpenAI GPT-4.0):</br>
     `python3 CLIQ_CommandLine.py -r "list the files in the directory"`
 
-- The -r flag specifies that the app should use the OpenAI remote model.
+   - The -r flag specifies that the app should use the OpenAI remote model.
 
 3. Interactive Mode:
 
