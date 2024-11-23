@@ -1,17 +1,20 @@
+ANTHEA
 * 1. Introduction (1-2 minutes)
 ** Project Context: Briefly introduce the app and its purpose.
 *** Example: "This project is a command-line interface application that leverages a local LLM to provide command suggestions in response to user queries. It simplifies working in the terminal by acting as a smart assistant."
 ** Problem Statement: What challenge does this app address?
 *** Example: "Many users, even experienced developers, forget specific terminal commands or need help constructing complex ones. This app solves that by providing relevant, context-aware command options."
 
+ANTHEA
 * 2. Features and Functionality (2-3 minutes)
 ** Core Features: Highlight the key capabilities of the app.
-*** Example: "You can type a question, receive 2-5 command suggestions, and select one to execute directly from the CLI."
+*** Example: "You can type a queStion, receive 2-5 command suggestions, and select one to execute directly from the CLI."
 ** User Workflow: Explain how a user interacts with the app.
 *** Example: "A user types their question, such as 'How do I find large files in a directory?' The app returns suggestions with descriptions, and the user selects one to execute."
 ** Local LLM Integration: Mention why you chose Ollama and the benefits of using a local model.
 *** Example: "The local LLM ensures privacy and performance by processing everything on the user's machine."
 
+TONY
 * 3. Technical Architecture (2-3 minutes)
 ** System Overview:
 Describe the flow of the application.
@@ -22,23 +25,30 @@ Discuss the use of JSON responses from the LLM and how they streamline the app's
 ** Execution Logic:
 *** Example: "The app securely runs selected commands using eval, with safeguards to minimize risks."
 
+TONY
 * 4. Challenges and Solutions (1-2 minutes)
 ** Challenges:
 *** Example: "One challenge was parsing and displaying suggestions from the LLM in a user-friendly way."
 ** Solutions:
 *** Example: "We addressed this by standardizing JSON responses and using jq for robust parsing."
 ** Discuss any design tradeoffs, like using eval with caution or balancing simplicity and flexibility.
+- Also, getting the program to run locally as well as remote.
 
+ANTHEA
 * 5. Demonstration (2-3 minutes)
 ** Show a live or recorded demo of the app in action.
 ** Walk through a real-world example, such as asking the app a question, reviewing the suggestions, and executing a command.
 ** Highlight the smooth user experience and accurate command generation.
 
+TONY
 * 6. Future Improvements (1 minute)
+- Make it so it can be used in a pipeline, pipe data into and out of CLIQ.
 ** Discuss how you’d expand or improve the app.
 *** Example: "In the future, we could add natural language feedback if a user isn’t satisfied with the options or integrate more security features."
 ** Mention possible integrations with tools like Docker, Kubernetes, or cloud-based LLMs.
+- We could add more models
 
+TONY
 * 7. Conclusion (1 minute)
 ** Summarize the project:
 "This CLI app enhances productivity by simplifying command-line usage with AI-powered suggestions."
