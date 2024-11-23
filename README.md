@@ -34,19 +34,28 @@ This app supports two modes of usage:
 
 1. Clone the Repository:
 
-`git clone <repo_url>
-cd <repo_name>`
+    `git clone <repo_url>` </br>
+    `cd <repo_name>`
 
 
-2. Install Dependencies:
+2. Create and Activate a Virtual Environment
+- Create a virtual environment named `venv`:
+    `python -m venv venv
+- Activate the virtual environment:
+  - Linux / macOS
+  - `source venv/bin/activate`
+  - Windows
+  - `.\venv\Scripts\activate
 
-`pip install -r requirements.txt`
+3. Install Dependencies:
 
-3. Set Up Environment Variables:
+    `pip install -r requirements.txt`
+
+4. Set Up Environment Variables:
 
 - Create a .env file in the root directory with the following content:
 
-`GITHUB_TOKEN=<your_openai_api_key>`
+    `GITHUB_TOKEN=<your_openai_api_key>`
 
 - Replace <your_openai_api_key> with your OpenAI API key.
 
@@ -58,63 +67,64 @@ The application can be run in two modes: local or remote.
 
 1. Local Mode (using Ollama 3.2):
 
-`python3 CLIQ_CommandLine.py "list the files in the directory"`
-
 - This will use the locally installed model (Ollama 3.2).
+     `python3 CLIQ_CommandLine.py "list the files in the directory"`
 
 2. Remote Mode (using OpenAI GPT-4.0):
 
-python3 CLIQ_CommandLine.py "list the files in the directory" -r
+    `python3 CLIQ_CommandLine.py -r "list the files in the directory"`
 
-The -r flag specifies that the app should use the OpenAI remote model.
+- The -r flag specifies that the app should use the OpenAI remote model.
 
-Interactive Mode:
+3. Interactive Mode:
 
-Run the app without any arguments:
+- Run the app without any arguments:
 
-python3 CLIQ_CommandLine.py
+    `python3 CLIQ_CommandLine.py`
 
-You will then be prompted to enter your query interactively:
+- You will then be prompted to enter your query interactively:
 
-Describe what you want to do:
+    `Describe what you want to do:`
 
-Example Queries
+##### Example Queries
 
-"list all files in the current directory"
+- "list all files in the current directory"
 
-"find all Python files in subdirectories"
+- "find all Python files in subdirectories"
 
-Command Execution
+##### Command Execution
 
-The app provides up to three command suggestions based on your query.
+- The app provides up to three command suggestions based on your query.
 
-After viewing the suggestions, you can select a command to run by entering its number.
+- After viewing the suggestions, you can select a command to run by entering its number.
 
-If the selected command is invalid or potentially dangerous, the app will alert you.
+- If the selected command is invalid or potentially dangerous, the app will alert you.
 
-Notes
+### Notes
 
-Ensure Ollama 3.2 is properly set up if you plan to run locally.
+- Ensure Ollama 3.2 is properly set up if you plan to run locally.
 
-The commands generated are intended to be non-destructive and safe for typical Unix-like environments.
+- The commands generated are intended to be non-destructive and safe for typical Unix-like environments.
 
-Dependencies
+### Dependencies
 
-Python Libraries: Listed in requirements.txt
+- Python Libraries: Listed in requirements.txt
+  
+  - subprocess, argparse, shutil, dotenv, openai, etc.
 
-subprocess, argparse, shutil, dotenv, openai, etc.
-
-Contributing
+### Contributing
 
 Contributions are welcome! Feel free to create issues or submit pull requests.
 
-License
+### License
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
-Contact
+### Contact
 
-If you have any questions or feedback, feel free to reach out at [your_email@example.com].
+If you have any questions or feedback, feel free to reach out at:
+- Tony
+- Anthea
 
 
  
@@ -139,7 +149,15 @@ query: your question (optional)
 ```
 python cliq.py [-r] [query]
 ```
+###### Run locally with request in command line
+`python3 CLIQ_CommandLine.py "list the files in the directory"`
 
+![Run locally with request in command line](./ScreenCaps/Run_Locally.png)
+</br>
+
+###### Run and be prompted for request
+![Run locally and be prompted](./ScreenCaps/Run_Local_No_Request.png)
+</br>
 
 ## Run with request in Command Line
 ### Remote LLM
@@ -157,9 +175,3 @@ python cliq.py [-r] [query]
 ### Local LLM
 #### Run with request in command line
 ##### (Do not use '-r')
-![Run locally with request in command line](./ScreenCaps/Run_Locally.png)
-</br>
-
-### Run and be prompted for request
-![Run locally with request in command line](./ScreenCaps/Run_Local_No_Request.png)
-</br>
