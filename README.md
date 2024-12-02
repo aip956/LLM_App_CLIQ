@@ -122,11 +122,7 @@ Contributions are welcome! Feel free to create issues or submit pull requests.
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
-### Contact
 
-If you have any questions or feedback, feel free to reach out at:
-- Tony
-- Anthea
 
 
  
